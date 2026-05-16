@@ -138,8 +138,8 @@ function TripHistory() {
   return (
     <main className="wallet-main-content trip-history-page">
       <UserPageHeader
-        title={t("trips.title")}
-        subtitle={t("trips.subtitle")}
+        title={t("Trips")}
+        subtitle={t("Trips")}
         user={tripPageUser}
         showFleetId={false}
       />
