@@ -1,0 +1,4 @@
+/* Aligns digits in stat cards and money columns without changing layout */
+.numeric-display {
+  font-variant-numeric: tabular-nums lining-nums;
+}

@@ -1,0 +1,15 @@
+# Use a dedicated venv for this folder. If you see hf-gradio / gradio-client conflicts:
+#   pip uninstall hf-gradio opencv-python -y
+# (keep one OpenCV: headless below; ultralytics may pull opencv-python — uninstall duplicate)
+
+ultralytics>=8.0.0,<9
+torch>=2.0.0
+opencv-python-headless>=4.8.0
+gradio>=4.0.0,<6
+numpy>=1.24.0
+Pillow>=10.0.0
+fastapi>=0.110.0,<1
+uvicorn[standard]>=0.27.0,<1
+python-multipart>=0.0.9
+# Arabic + Latin plate text (numbers & letters). First run downloads models (~100MB+).
+easyocr>=1.7.0

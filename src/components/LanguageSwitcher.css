@@ -1,0 +1,106 @@
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.language-switcher:focus-visible {
+  outline: 2px solid var(--nav-accent, #007fff);
+  outline-offset: 2px;
+}
+
+.language-switcher--sidebar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.language-switcher--sidebar:hover {
+  background: rgba(0, 127, 255, 0.2);
+  box-shadow: 0 0 18px rgba(0, 127, 255, 0.35);
+}
+
+.language-switcher--navbar {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  background: rgba(0, 127, 255, 0.1);
+  color: #0f172a;
+  border: 1px solid rgba(0, 127, 255, 0.22);
+}
+
+.language-switcher--navbar:hover {
+  background: rgba(0, 127, 255, 0.16);
+}
+
+.language-switcher__badge {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Login / Signup: strong light surface so the icon reads on dark gradients */
+.language-switcher--auth {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 200;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #007fff;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 4px 20px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(0, 127, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.language-switcher--auth:hover {
+  background: #ffffff;
+  color: #0066cc;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 1) inset,
+    0 6px 24px rgba(0, 127, 255, 0.22),
+    0 0 0 1px rgba(0, 127, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.language-switcher--auth:active {
+  transform: translateY(0);
+}
+
+html[dir="rtl"] .language-switcher--auth {
+  right: auto;
+  left: 24px;
+}
+
+.language-switcher--ghost {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: transparent;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  .language-switcher--auth {
+    top: 12px;
+    right: 12px;
+  }
+
+  html[dir="rtl"] .language-switcher--auth {
+    left: 12px;
+  }
+}

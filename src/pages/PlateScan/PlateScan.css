@@ -1,0 +1,255 @@
+.plate-scan-page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.plate-scan-wallet {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.plate-scan-gate-result {
+  background: linear-gradient(135deg, rgba(0, 127, 255, 0.08), rgba(0, 200, 255, 0.12));
+  border: 1px solid rgba(0, 127, 255, 0.25);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.plate-scan-gate-result h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.plate-scan-gate-fare {
+  margin: 0 0 0.35rem;
+}
+
+.plate-scan-gate-status {
+  font-weight: 600;
+  margin: 0;
+}
+
+.plate-scan-gate-status--paid {
+  color: #16a34a;
+}
+
+.plate-scan-gate-status--unpaid {
+  color: #dc2626;
+}
+
+.plate-scan-gate-name {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.plate-scan-item__new-vehicle {
+  font-size: 0.85rem;
+  color: #007fff;
+  margin: 0.25rem 0;
+}
+
+.plate-scan-error {
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.5);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.plate-scan-upload-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 127, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.plate-scan-upload-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #007fff22, #00c8ff33);
+  color: #007fff;
+}
+
+.plate-scan-owner-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.plate-scan-owner-select select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.plate-scan-owner-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.plate-scan-wallet-user {
+  color: #64748b;
+  font-weight: normal;
+}
+
+.plate-scan-vehicle-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.plate-scan-vehicle-select select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.plate-scan-file-input {
+  display: none;
+}
+
+.plate-scan-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  background: #007fff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.plate-scan-upload-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.plate-scan-spin {
+  animation: plate-scan-spin 0.8s linear infinite;
+}
+
+@keyframes plate-scan-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.plate-scan-preview {
+  max-width: 100%;
+  max-height: 280px;
+  margin-top: 1.25rem;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.plate-scan-history h2 {
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.plate-scan-empty {
+  color: #64748b;
+}
+
+.plate-scan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.plate-scan-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+@media (max-width: 640px) {
+  .plate-scan-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plate-scan-item__media img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  max-height: 120px;
+}
+
+.plate-scan-item__placeholder {
+  height: 100px;
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.plate-scan-item__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.plate-scan-label {
+  color: #64748b;
+}
+
+.plate-scan-match {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.match-ok {
+  color: #16a34a;
+}
+
+.match-no {
+  color: #dc2626;
+}
+
+.plate-scan-item__err {
+  color: #b91c1c;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.plate-scan-time {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}

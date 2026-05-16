@@ -1,0 +1,32 @@
+.monthly-line-chart {
+  margin-bottom: 24px;
+}
+
+.monthly-line-chart__title {
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--user-text, #0f172a);
+  letter-spacing: -0.02em;
+}
+
+.monthly-line-chart__plot {
+  width: 100%;
+  height: 280px;
+}
+
+.user-app-shell .monthly-line-chart__title {
+  color: var(--user-text);
+}
+
+.monthly-line-chart--empty .monthly-line-chart__plot {
+  display: none;
+}
+
+.monthly-line-chart__empty-text {
+  margin: 0;
+  padding: 8px 4px 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--user-muted, #64748b);
+}

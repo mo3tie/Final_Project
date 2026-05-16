@@ -1,0 +1,676 @@
+/* src/pages/Dashboard/AdminDashboard.css */
+
+/* Shell background + sidebar offset come from UserLayout-style AdminLayout */
+
+.admin-main-content {
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+/* ============================================
+   STATS SECTION
+   ============================================ */
+.admin-stats-section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-stat-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+/* Stat cards: Total Revenue, Total Trips, Active Violations, This Month — larger KPI readout */
+.admin-stat-card--kpi .stat-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #374151;
+  letter-spacing: 0.01em;
+  margin-bottom: 10px;
+}
+
+.admin-stat-card--kpi .stat-value {
+  font-size: clamp(2rem, 2.8vw + 1rem, 2.75rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.stat-icon--lucide {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.stat-icon--lucide svg {
+  flex-shrink: 0;
+}
+
+.green-bg.stat-icon--lucide {
+  color: #15803d;
+}
+
+.blue-bg.stat-icon--lucide {
+  color: #007fff;
+}
+
+.red-bg.stat-icon--lucide {
+  color: #dc2626;
+}
+
+.yellow-bg.stat-icon--lucide {
+  color: #ca8a04;
+}
+
+.green-bg {
+  background: #dcfce7;
+}
+
+.blue-bg {
+  background: #dbeafe;
+}
+
+.red-bg {
+  background: #fee2e2;
+}
+
+.yellow-bg {
+  background: #fef3c7;
+}
+
+.recharge-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.recharge-btn:hover {
+  background: #2563eb;
+}
+
+.stat-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-trend {
+  font-size: 13px;
+  font-weight: 600;
+  color: #16a34a;
+}
+
+.stat-trend.positive::before {
+  content: "↑ ";
+}
+
+.violations-fine {
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.stat-note {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ============================================
+   CONTENT SECTION
+   ============================================ */
+.admin-content-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   RECENT TRIPS TABLE
+   ============================================ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.admin-trips-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.admin-trips-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-trips-th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-trips-th--icon {
+  width: 56px;
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.admin-trips-th--numeric {
+  text-align: right;
+}
+
+.admin-trip-row {
+  background: #fff;
+  transition: background 0.15s;
+}
+
+.admin-trip-row:hover {
+  background: #f9fafb;
+}
+
+.admin-trips-td {
+  padding: 14px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+}
+
+.admin-trips-td--icon {
+  width: 56px;
+  padding-right: 8px;
+}
+
+.admin-trips-td--vehicle {
+  font-weight: 700;
+}
+
+.admin-trips-td--muted {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.admin-trips-td--numeric {
+  text-align: right;
+}
+
+.admin-trip-row:last-child .admin-trips-td {
+  border-bottom: none;
+}
+
+.trip-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1px solid rgba(0, 127, 255, 0.18);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.trip-icon--lucide {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.trip-icon--lucide svg {
+  flex-shrink: 0;
+}
+
+.trip-icon--car {
+  color: #007fff;
+  background: linear-gradient(145deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: rgba(0, 127, 255, 0.22);
+}
+
+.trip-icon--bus {
+  color: #6d28d9;
+  background: linear-gradient(145deg, #f5f3ff 0%, #ede9fe 100%);
+  border-color: rgba(109, 40, 217, 0.22);
+}
+
+.trip-icon--minibus {
+  color: #0d9488;
+  background: linear-gradient(145deg, #f0fdfa 0%, #ccfbf1 100%);
+  border-color: rgba(13, 148, 136, 0.25);
+}
+
+.trip-icon--truck {
+  color: #c2410c;
+  background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 100%);
+  border-color: rgba(194, 65, 12, 0.22);
+}
+
+.trip-details {
+  flex: 1;
+}
+
+.trip-details h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.trip-details p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.trip-fare {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-right: 16px;
+}
+
+.trip-status {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.trip-status.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.trip-status.violation {
+  background: #fef3c7;
+  color: #854d0e;
+}
+
+/* ============================================
+   ALERTS LIST
+   ============================================ */
+.admin-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.admin-alert-item {
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  gap: 12px;
+}
+
+.alert-error {
+  background: #fef2f2;
+  border-left: 3px solid #ef4444;
+}
+
+.alert-warning {
+  background: #fefce8;
+  border-left: 3px solid #eab308;
+}
+
+.alert-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.alert-icon--lucide {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: unset;
+}
+
+.alert-error .alert-icon--lucide {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.alert-warning .alert-icon--lucide {
+  background: rgba(234, 179, 8, 0.15);
+  color: #a16207;
+}
+
+.alert-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.alert-content p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.alert-time {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.view-all-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #3b82f6;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-all-btn:hover {
+  background: #f9fafb;
+  border-color: #3b82f6;
+}
+
+/* ============================================
+   TRIPS & WALLET TRENDS (shared month filter)
+   ============================================ */
+.admin-trends-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.admin-trends-filter-card {
+  padding-bottom: 20px;
+}
+
+.admin-trends-filter-head {
+  margin-bottom: 18px;
+}
+
+.admin-trends-title {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.admin-trends-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.admin-trends-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-trends-preset {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.admin-trends-preset:hover {
+  border-color: rgba(0, 127, 255, 0.35);
+  color: #007fff;
+  background: rgba(239, 246, 255, 0.65);
+}
+
+.admin-trends-preset--active {
+  border-color: rgba(0, 127, 255, 0.45);
+  background: linear-gradient(145deg, #007fff 0%, #0066cc 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 127, 255, 0.25);
+}
+
+.admin-trends-preset--active:hover {
+  color: #fff;
+}
+
+.admin-trends-month-block {
+  margin-top: 4px;
+}
+
+.admin-trends-month-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.admin-trends-month-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-trends-chip {
+  min-width: 48px;
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #94a3b8;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.admin-trends-chip:hover {
+  border-color: rgba(0, 127, 255, 0.3);
+  color: #007fff;
+}
+
+.admin-trends-chip--on {
+  border-color: rgba(0, 127, 255, 0.4);
+  background: rgba(239, 246, 255, 0.95);
+  color: #007fff;
+  box-shadow: 0 0 0 1px rgba(0, 127, 255, 0.1);
+}
+
+.admin-trends-chip:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px rgba(0, 127, 255, 0.45);
+}
+
+.admin-trends-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.admin-trend-chart-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.admin-trend-chart-title {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.admin-trend-chart-desc {
+  margin: 0 0 16px 0;
+  font-size: 0.8125rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.admin-trend-chart-plot {
+  flex: 1;
+  min-height: 280px;
+  width: 100%;
+}
+
+.admin-trend-chart-empty {
+  margin: 0;
+  height: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: #64748b;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+  .admin-stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-content-section,
+  .admin-trends-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .admin-main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .admin-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .admin-badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .shield-icon {
+    font-size: 24px;
+  }
+}

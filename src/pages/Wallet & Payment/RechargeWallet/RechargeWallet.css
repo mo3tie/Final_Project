@@ -1,0 +1,432 @@
+/* src/pages/Wallet & Payment/RechargeWallet/RechargeWallet.css */
+/* Same patterns as WalletPage.css and UserDashboard.css */
+
+.recharge-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.recharge-back-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recharge-back-btn:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+/* ============================================
+   TWO COLUMN LAYOUT
+   ============================================ */
+.recharge-two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.recharge-left-column,
+.recharge-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ============================================
+   RECHARGE AMOUNT CARD (LEFT COLUMN)
+   ============================================ */
+.recharge-amount-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.recharge-card-header-blue {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  padding: 16px 24px;
+}
+
+.recharge-card-header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.recharge-card-body {
+  padding: 24px;
+}
+
+.recharge-amount-input-wrapper {
+  position: relative;
+}
+
+.recharge-amount-input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-right: 48px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #111827;
+}
+
+.recharge-amount-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.recharge-amount-input::placeholder {
+  color: #9ca3af;
+}
+
+.recharge-amount-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+/* ============================================
+   CARD PREVIEW (LEFT COLUMN)
+   ============================================ */
+.recharge-card-preview-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.recharge-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.recharge-card-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.586 / 1;
+  background: linear-gradient(135deg, #1e40af, #3b82f6, #60a5fa);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.recharge-card-preview-chip {
+  font-size: 32px;
+  margin-bottom: auto;
+}
+
+.recharge-card-preview-visa {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.recharge-card-preview-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 2px;
+  font-family: "Courier New", monospace;
+}
+
+/* ============================================
+   PAYMENT FORM (RIGHT COLUMN)
+   ============================================ */
+.recharge-payment-form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.recharge-form-group {
+  margin-bottom: 20px;
+}
+
+.recharge-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.recharge-form-input,
+.recharge-form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  font-family: inherit;
+}
+
+.recharge-form-input:focus,
+.recharge-form-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.recharge-form-input::placeholder,
+.recharge-form-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.recharge-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.recharge-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.recharge-card-input-wrapper {
+  position: relative;
+}
+
+.recharge-card-number-input {
+  padding-right: 60px;
+}
+
+.recharge-visa-logo-small {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e40af;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   SAVE CARD TOGGLE
+   ============================================ */
+.recharge-save-card-toggle {
+  margin-top: 8px;
+}
+
+.recharge-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.recharge-toggle-input {
+  display: none;
+}
+
+.recharge-toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #d1d5db;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.recharge-toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.recharge-toggle-input:checked + .recharge-toggle-slider {
+  background: #3b82f6;
+}
+
+.recharge-toggle-input:checked + .recharge-toggle-slider::before {
+  transform: translateX(20px);
+}
+
+.recharge-toggle-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* ============================================
+   FOOTER (CANCEL & PROCEED BUTTONS)
+   ============================================ */
+.recharge-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.recharge-footer-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.recharge-cancel-btn {
+  padding: 14px 32px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recharge-cancel-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.recharge-cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recharge-proceed-btn {
+  padding: 14px 32px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recharge-proceed-btn:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.recharge-proceed-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.recharge-security-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.recharge-security-icon {
+  font-size: 16px;
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+.recharge-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: recharge-toast-in 0.3s ease;
+  z-index: 1000;
+}
+
+.recharge-toast-success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.recharge-toast-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+@keyframes recharge-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+  .recharge-two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .wallet-main-content {
+    padding: 20px;
+  }
+
+  .recharge-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .recharge-footer-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .recharge-cancel-btn,
+  .recharge-proceed-btn {
+    width: 100%;
+  }
+}

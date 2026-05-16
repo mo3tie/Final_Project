@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "vehicle_weights": "yolo8_last_version_car(must).pt",
+    "plate_weights": "plattes_detect_model.pt",
+    "character_weights": "best.pt",
+    "reading_rtl_first": true
+  },
+  "errors": {},
+  "vehicles": {
+    "vehicle_0": {
+      "vehicle_type": "scene",
+      "class_id": -1,
+      "confidence": 1.0,
+      "box_on_frame": {
+        "x1": 0.0,
+        "y1": 0.0,
+        "x2": 999.0,
+        "y2": 599.0
+      },
+      "plates": {
+        "plate_0": {
+          "confidence": 0.9218,
+          "class": "pallet",
+          "class_id": 0,
+          "box_on_frame": {
+            "x1": 484.78,
+            "y1": 392.67,
+            "x2": 591.44,
+            "y2": 444.35
+          },
+          "plate_crop": {
+            "x": 478,
+            "y": 390,
+            "width": 120,
+            "height": 57
+          },
+          "reading_order": "haafaaqaaf8969",
+          "characters": {
+            "char_0": {
+              "symbol": "haa",
+              "class_id": 20,
+              "confidence": 0.8524,
+              "box_on_plate_crop": {
+                "x1": 88.02,
+                "y1": 29.2,
+                "x2": 101.58,
+                "y2": 46.6
+              },
+              "box_on_frame": {
+                "x1": 566.02,
+                "y1": 419.2,
+                "x2": 579.58,
+                "y2": 436.6
+              }
+            },
+            "char_1": {
+              "symbol": "faa",
+              "class_id": 18,
+              "confidence": 0.7695,
+              "box_on_plate_crop": {
+                "x1": 71.74,
+                "y1": 25.66,
+                "x2": 86.27,
+                "y2": 47.86
+              },
+              "box_on_frame": {
+                "x1": 549.74,
+                "y1": 415.66,
+                "x2": 564.27,
+                "y2": 437.86
+              }
+            },
+            "char_2": {
+              "symbol": "qaaf",
+              "class_id": 27,
+              "confidence": 0.3937,
+              "box_on_plate_crop": {
+                "x1": 71.42,
+                "y1": 25.77,
+                "x2": 86.36,
+                "y2": 47.94
+              },
+              "box_on_frame": {
+                "x1": 549.42,
+                "y1": 415.77,
+                "x2": 564.36,
+                "y2": 437.94
+              }
+            },
+            "char_3": {
+              "symbol": "8",
+              "class_id": 9,
+              "confidence": 0.8465,
+              "box_on_plate_crop": {
+                "x1": 48.4,
+                "y1": 27.39,
+                "x2": 59.0,
+                "y2": 48.72
+              },
+              "box_on_frame": {
+                "x1": 526.4,
+                "y1": 417.39,
+                "x2": 537.0,
+                "y2": 438.72
+              }
+            },
+            "char_4": {
+              "symbol": "9",
+              "class_id": 10,
+              "confidence": 0.8394,
+              "box_on_plate_crop": {
+                "x1": 37.15,
+                "y1": 26.28,
+                "x2": 47.27,
+                "y2": 48.18
+              },
+              "box_on_frame": {
+                "x1": 515.15,
+                "y1": 416.28,
+                "x2": 525.27,
+                "y2": 438.18
+              }
+            },
+            "char_5": {
+              "symbol": "6",
+              "class_id": 6,
+              "confidence": 0.8452,
+              "box_on_plate_crop": {
+                "x1": 25.12,
+                "y1": 26.12,
+                "x2": 35.55,
+                "y2": 47.82
+              },
+              "box_on_frame": {
+                "x1": 503.12,
+                "y1": 416.12,
+                "x2": 513.55,
+                "y2": 437.82
+              }
+            },
+            "char_6": {
+              "symbol": "9",
+              "class_id": 10,
+              "confidence": 0.8284,
+              "box_on_plate_crop": {
+                "x1": 13.53,
+                "y1": 26.48,
+                "x2": 23.77,
+                "y2": 47.6
+              },
+              "box_on_frame": {
+                "x1": 491.53,
+                "y1": 416.48,
+                "x2": 501.77,
+                "y2": 437.6
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "plates_without_vehicle": {}
+}

@@ -1,0 +1,113 @@
+/* Shared user-app shell theme (dashboard, wallet, trips, profile, …) */
+
+.user-app-shell {
+  --user-accent: #007fff;
+  --user-accent-dark: #0066cc;
+  --user-text: #0f172a;
+  --user-text-muted: #64748b;
+  --user-border: rgba(148, 163, 184, 0.35);
+  /* Frosted panels: low-opacity fill + blur reads as glass on the gradient */
+  --user-glass: rgba(255, 255, 255, 0.45);
+  --user-glass-border: rgba(255, 255, 255, 0.82);
+
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--user-text);
+  background-color: #e8edf5;
+  background-image:
+    radial-gradient(ellipse 100% 80% at 0% 0%, rgba(0, 127, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 100% 10%, rgba(37, 99, 235, 0.1), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(191, 219, 254, 0.35), transparent 45%),
+    linear-gradient(180deg, #eef2f9 0%, #e4eaf4 45%, #f0f4fb 100%);
+  background-attachment: fixed;
+}
+
+.user-app-shell__main {
+  flex: 1;
+  margin-left: var(--app-sidebar-offset, 124px);
+  width: calc(100% - var(--app-sidebar-offset, 124px));
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+.user-app-shell__content {
+  flex: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 40px 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.user-app-shell__outlet {
+  flex: 1;
+  padding: 0;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Main column: remove duplicate sidebar offset inside shell */
+.user-app-shell .wallet-main-content,
+.user-app-shell .admin-main-content,
+.user-app-shell .user-dashboard__main {
+  margin-left: 0;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-app-shell .user-dashboard {
+  display: block;
+  min-height: auto;
+  background: none;
+}
+
+.user-app-shell .glass-panel {
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--user-glass-border);
+  border-radius: 24px;
+  padding: 22px 24px;
+  box-sizing: border-box;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.12),
+    0 8px 32px rgba(0, 127, 255, 0.1),
+    0 12px 40px -12px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+@media (max-width: 768px) {
+  .user-app-shell__main {
+    margin-left: var(--app-sidebar-offset, 100px);
+    width: calc(100% - var(--app-sidebar-offset, 100px));
+  }
+
+  .user-app-shell__content {
+    padding: 0 20px 28px;
+  }
+}
+
+/* RTL: mirror sidebar offset and floating rail */
+html[dir="rtl"] .user-app-shell__main {
+  margin-left: 0;
+  margin-right: var(--app-sidebar-offset, 124px);
+}
+
+@media (max-width: 768px) {
+  html[dir="rtl"] .user-app-shell__main {
+    margin-right: var(--app-sidebar-offset, 100px);
+  }
+}
+
+html[dir="rtl"] .user-app-shell {
+  font-family: "Cairo", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}

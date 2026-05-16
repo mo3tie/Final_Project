@@ -1,0 +1,202 @@
+/* Glass + accent overrides for user pages inside .user-app-shell */
+
+.user-app-shell .add-vehicle-header h1 {
+  color: #0f172a;
+}
+
+.user-app-shell .add-vehicle-header p {
+  color: #64748b;
+}
+
+/* Cards: frosted glass + azure neon rim (readable on light gradient) */
+.user-app-shell .wallet-balance-card,
+.user-app-shell .wallet-filters-card,
+.user-app-shell .wallet-summary-card,
+.user-app-shell .wallet-transactions-card,
+.user-app-shell .trip-filter-section,
+.user-app-shell .trip-stat-card,
+.user-app-shell .trip-table-section,
+.user-app-shell .profile-user-card,
+.user-app-shell .profile-vehicles-card,
+.user-app-shell .profile-stats-card,
+.user-app-shell .edit-profile-card,
+.user-app-shell .edit-profile-vehicles-card,
+.user-app-shell .edit-profile-verification-card,
+.user-app-shell .profile-vehicle-item,
+.user-app-shell .add-vehicle-card,
+.user-app-shell .add-vehicle-info-box,
+.user-app-shell .recharge-amount-card,
+.user-app-shell .recharge-card-preview-card,
+.user-app-shell .recharge-payment-form-section,
+.user-app-shell .recharge-summary-card,
+.user-app-shell .monthly-line-chart {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.12),
+    0 8px 28px rgba(0, 127, 255, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.user-app-shell .wallet-recharge-btn,
+.user-app-shell .trip-apply-btn,
+.user-app-shell .trip-pagination-active,
+.user-app-shell .edit-profile-save-btn,
+.user-app-shell .add-vehicle-submit-btn,
+.user-app-shell .recharge-proceed-btn {
+  background: linear-gradient(135deg, #007fff 0%, #0066cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.35),
+    0 4px 20px rgba(0, 127, 255, 0.35);
+}
+
+.user-app-shell .wallet-recharge-btn:hover,
+.user-app-shell .trip-apply-btn:hover {
+  filter: brightness(1.05);
+}
+
+.user-app-shell .trip-pagination-active:hover {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  border-color: transparent;
+}
+
+.user-app-shell .wallet-input,
+.user-app-shell .wallet-select,
+.user-app-shell .trip-date-input,
+.user-app-shell .trip-governorate-select,
+.user-app-shell .edit-profile-input,
+.user-app-shell .edit-profile-prefix {
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 127, 255, 0.08);
+}
+
+.user-app-shell .wallet-input:focus,
+.user-app-shell .wallet-select:focus,
+.user-app-shell .trip-date-input:focus,
+.user-app-shell .trip-governorate-select:focus,
+.user-app-shell .edit-profile-input:focus,
+.user-app-shell .edit-profile-input-row:focus-within .edit-profile-prefix {
+  border-color: #007fff;
+  box-shadow:
+    0 0 0 2px rgba(0, 127, 255, 0.25),
+    0 0 20px rgba(0, 127, 255, 0.15);
+}
+
+.user-app-shell .trip-pagination-btn:hover:not(:disabled),
+.user-app-shell .trip-pagination-number:hover {
+  border-color: rgba(0, 127, 255, 0.45);
+  color: #007fff;
+}
+
+.user-app-shell .trip-id-cell {
+  color: #007fff;
+}
+
+.user-app-shell .wallet-transactions-table th,
+.user-app-shell .trip-table th {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.user-app-shell .wallet-input,
+.user-app-shell .wallet-select,
+.user-app-shell .trip-date-input,
+.user-app-shell .trip-governorate-select {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.user-app-shell .trip-pagination-btn,
+.user-app-shell .trip-pagination-number,
+.user-app-shell .trip-reset-btn {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 24px;
+}
+
+.user-app-shell .trip-status-badge {
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 127, 255, 0.12);
+}
+
+.user-app-shell .edit-profile-add-vehicle-btn,
+.user-app-shell .edit-profile-verify-btn {
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.35), 0 4px 16px rgba(22, 163, 74, 0.25);
+}
+
+.user-app-shell .edit-profile-cancel-btn {
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgba(0, 127, 255, 0.1);
+}
+
+.user-app-shell .edit-profile-icon-btn {
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.user-app-shell .edit-profile-vehicles-card .edit-profile-vehicle-item {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 6px 22px rgba(0, 127, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.user-app-shell .edit-profile-vehicles-card .edit-profile-icon-btn--delete {
+  box-shadow:
+    0 2px 12px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(0, 127, 255, 0.12);
+}
+
+.user-app-shell .edit-profile-vehicles-card .edit-profile-vehicle-type-badge {
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(3, 105, 161, 0.18);
+}
+
+.user-app-shell .edit-profile-photo-btn--primary {
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.35),
+    0 4px 18px rgba(0, 127, 255, 0.3);
+}
+
+.user-app-shell .edit-profile-photo-btn:not(.edit-profile-photo-btn--primary) {
+  box-shadow: 0 0 0 1px rgba(0, 127, 255, 0.1);
+}
+
+.user-app-shell .profile-edit-btn {
+  background: linear-gradient(135deg, #007fff 0%, #0066cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.35),
+    0 4px 20px rgba(0, 127, 255, 0.3);
+}
+
+.user-app-shell .profile-vehicle-status {
+  border-radius: 24px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.user-app-shell .edit-profile-cancel-btn {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Match spacious in-card padding from page CSS */
+.user-app-shell .trip-filter-section,
+.user-app-shell .trip-table-section,
+.user-app-shell .edit-profile-card,
+.user-app-shell .profile-user-card,
+.user-app-shell .profile-vehicles-card,
+.user-app-shell .profile-stats-card,
+.user-app-shell .add-vehicle-card {
+  padding: 40px;
+}

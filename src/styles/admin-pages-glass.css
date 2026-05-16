@@ -1,0 +1,153 @@
+/* Admin pages inside .user-app-shell — mirror user glass + #007fff accents */
+
+.user-app-shell .admin-main-content,
+.user-app-shell .admin-trip-main,
+.user-app-shell .admin-wallet-main {
+  margin-left: 0;
+  width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page title + subtitle — pale blue-grey panel + soft bottom edge */
+.user-app-shell .admin-page-title-card {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  background: #e8f0f8;
+  border-radius: 18px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  border: 1px solid rgba(203, 213, 225, 0.65);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75) inset,
+    0 2px 4px rgba(15, 23, 42, 0.04),
+    0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.user-app-shell .admin-page-title-card h1 {
+  margin: 0 0 4px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.user-app-shell .admin-page-title-card p {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.45;
+}
+
+.user-app-shell .admin-stat-card,
+.user-app-shell .admin-card,
+.user-app-shell .admin-trip-filter-section,
+.user-app-shell .admin-trip-stat-card,
+.user-app-shell .admin-trip-table-section,
+.user-app-shell .admin-wallet-card,
+.user-app-shell .admin-wallet-filters,
+.user-app-shell .admin-wallet-table-section {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.12),
+    0 8px 28px rgba(0, 127, 255, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.user-app-shell .admin-trip-apply-btn,
+.user-app-shell .admin-trip-pagination-active,
+.user-app-shell .admin-wallet-search-input:focus {
+  border-color: #007fff;
+}
+
+.user-app-shell .admin-trip-apply-btn {
+  background: linear-gradient(135deg, #007fff 0%, #0066cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.35),
+    0 4px 18px rgba(0, 127, 255, 0.28);
+}
+
+.user-app-shell .admin-trip-date-input:focus,
+.user-app-shell .admin-trip-select:focus,
+.user-app-shell .admin-trip-governorate-select:focus {
+  outline: none;
+  border-color: #007fff;
+  box-shadow:
+    0 0 0 2px rgba(0, 127, 255, 0.25),
+    0 0 20px rgba(0, 127, 255, 0.15);
+}
+
+.user-app-shell .admin-trip-id-cell {
+  color: #007fff;
+}
+
+.user-app-shell .admin-trip-table th {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.user-app-shell .admin-wallet-card-primary {
+  background: linear-gradient(135deg, #007fff 0%, #0066cc 48%, #004a99 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(0, 127, 255, 0.35),
+    0 12px 36px rgba(0, 127, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-label {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-value,
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-value-sm {
+  color: #fff;
+}
+
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-sub {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-sub.positive {
+  color: #bbf7d0;
+}
+
+.user-app-shell .admin-wallet-card-primary .admin-wallet-card-icon {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.38);
+  color: #fff;
+}
+
+.user-app-shell .admin-wallet-table th {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.user-app-shell .charts-section .admin-card {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.user-app-shell .admin-trip-filter-section,
+.user-app-shell .admin-trip-table-section,
+.user-app-shell .admin-wallet-filters,
+.user-app-shell .admin-wallet-table-section {
+  padding: 40px;
+}
+
+.user-app-shell .admin-trip-pagination-active {
+  background: linear-gradient(135deg, #007fff 0%, #0066cc 100%);
+  color: #fff;
+  border-color: transparent;
+  border-radius: 24px;
+}

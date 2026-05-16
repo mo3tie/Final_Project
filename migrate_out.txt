@@ -1,0 +1,14 @@
+﻿python : System check identified some issues:
+At C:\Users\User\AppData\Local\Temp\ps-script-c713327e-1a44-4c4f-a674-bc00b458b636.ps1:109 char:45
++ ... r\grad\src\backend\Autofare; python manage.py migrate ai 2>&1 | Out-F ...
++                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (System check identified some issues::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+WARNINGS:
+?: (urls.W005) URL namespace 'ai' isn't unique. You may not be able to reverse all URLs in this namespace
+Operations to perform:
+  Apply all migrations: ai
+Running migrations:
+  Applying ai.0002_platescan... OK
