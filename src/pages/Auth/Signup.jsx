@@ -76,9 +76,22 @@ function Signup() {
     });
   };
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
     setSubmitError("");
-    setOtpSentNotice(true);
+    const email = formData.email.trim();
+
+    if (!email) {
+      setSubmitError(t("signup.emailRequired"));
+      return;
+    }
+
+    try {
+      await API.post(ENDPOINTS.SEND_OTP, { email });
+      setOtpSentNotice(true);
+    } catch (err) {
+      const msg = err.response?.data?.email?.[0] || err.response?.data?.detail || t("signup.otpSendError");
+      setSubmitError(msg);
+    }
   };
 
   const handleLicenseChange = (e) => {
@@ -127,6 +140,7 @@ function Signup() {
       fd.append("vehicleColor", formData.vehicleColor.trim());
       fd.append("password", formData.password);
       fd.append("confirmPassword", formData.confirmPassword);
+      fd.append("otpCode", formData.otpCode);
       fd.append("agreeToTerms", formData.agreeToTerms ? "true" : "false");
       if (!licenseFile) {
         setSubmitError(t("signup.licenseRequired"));

@@ -293,13 +293,13 @@
 
 /* Form column */
 .signup-form-section {
-  padding: 40px 44px;
+  padding: 56px 44px 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background: #fafbfc;
   overflow-y: auto;
-  max-height: min(92vh, 900px);
+  max-height: none;
 }
 
 .form-wrapper {
@@ -355,6 +355,7 @@
 
 .form-header {
   margin-bottom: 22px;
+  padding-top: 8px;
 }
 
 .form-title {
@@ -392,7 +393,7 @@
 }
 
 .form-group {
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .form-label {
@@ -868,7 +869,7 @@
 
 @media (max-width: 768px) {
   .signup-page {
-    padding: 20px 16px 88px;
+    padding: 28px 16px 88px;
   }
 
   .signup-container {
@@ -876,7 +877,7 @@
   }
 
   .signup-form-section {
-    padding: 28px 20px;
+    padding: 40px 20px 36px;
   }
 
   .signup-email-otp-row {

@@ -319,8 +319,8 @@
     "loadError": "Could not load scans.",
     "scanError": "Scan failed. Check that AI models are installed on the server.",
     "adminTitle": "Register vehicle (admin)",
-    "adminSubtitle": "Scan a plate and assign the vehicle to a user — tolls charge their wallet",
-    "adminUploadHint": "Select the account first, then upload the vehicle photo. The car is linked to that user, not your admin account.",
+    "adminSubtitle": "Scan a plate and auto-assign the vehicle to the detected user.",
+    "adminUploadHint": "Upload a vehicle photo and the system will link the plate to the matching user account automatically.",
     "adminHistory": "Recent gate registrations",
     "assignToUser": "Assign vehicle to user",
     "selectUserFirst": "Select a user account before uploading.",
@@ -542,6 +542,13 @@
       "q3": "Q3",
       "q4": "Q4"
     }
+  },
+  "trips": {
+    "vehicle": "Vehicle",
+    "time": "Time",
+    "fare": "Fare",
+    "status": "Status",
+    "violations": "Violations"
   },
   "adminTrip": {
     "title": "Trip management",

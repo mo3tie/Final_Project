@@ -10,6 +10,7 @@ import {
   FileText,
   AlertTriangle,
   DollarSign,
+  Car,
 } from "lucide-react";
 import API from "../../APi/axiosConfig";
 import { ENDPOINTS } from "../../APi/endpoints";
@@ -137,30 +138,36 @@ function ProfilePage() {
 
       <div className="profile-content-bento">
         <section className="profile-vehicles-card">
-          <h3 className="profile-card-title">{t("profile.linkedVehicles")}</h3>
-          <div className="profile-vehicles-list">
+          <div className="profile-vehicles-header">
+            <h3 className="profile-card-title">{t("profile.linkedVehicles")}</h3>
+            <button type="button" className="profile-add-vehicle-btn" onClick={() => navigate("/dashboard/profile/add-vehicle")}>
+              + {t("profile.addVehicle")}
+            </button>
+          </div>
+          <div className="profile-vehicles-grid">
             {vehicles.length === 0 ? (
               <p style={{ padding: "8px 4px", opacity: 0.85 }}>{t("profile.noVehicles")}</p>
             ) : (
               vehicles.map((vehicle) => (
-                <div key={vehicle.id} className="profile-vehicle-item">
-                  <div className="profile-vehicle-info">
-                    <span className="profile-vehicle-plate">{vehicle.plate}</span>
-                    <span className="profile-vehicle-model">{vehicle.model}</span>
+                <div key={vehicle.id} className="profile-vehicle-card">
+                  <div className="profile-vehicle-card-icon">
+                    <Car size={32} strokeWidth={1.75} />
                   </div>
-                  <div className="profile-vehicle-actions">
-                    <button
-                      type="button"
-                      className={`profile-vehicle-status ${
-                        vehicle.status === "Active"
-                          ? "profile-vehicle-status-active"
-                          : "profile-vehicle-status-inactive"
-                      }`}
-                      onClick={() => toggleVehicleStatus(vehicle.id, vehicle.is_active)}
-                    >
-                      {vehicle.status === "Active" ? t("common.active") : t("common.inactive")}
-                    </button>
+                  <div className="profile-vehicle-card-content">
+                    <h4 className="profile-vehicle-card-plate">{vehicle.plate}</h4>
+                    <p className="profile-vehicle-card-model">{vehicle.model}</p>
                   </div>
+                  <button
+                    type="button"
+                    className={`profile-vehicle-card-status ${
+                      vehicle.status === "Active"
+                        ? "profile-vehicle-card-status-active"
+                        : "profile-vehicle-card-status-inactive"
+                    }`}
+                    onClick={() => toggleVehicleStatus(vehicle.id, vehicle.is_active)}
+                  >
+                    {vehicle.status === "Active" ? t("common.active") : t("common.inactive")}
+                  </button>
                 </div>
               ))
             )}

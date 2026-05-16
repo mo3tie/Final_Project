@@ -1,6 +1,6 @@
 // src/pages/Dashboard/AdminDashboard.jsx
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Wallet,
@@ -17,6 +17,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import API from "../../APi/axiosConfig";
+import { ENDPOINTS } from "../../APi/endpoints";
 import "./AdminDashboard.css";
 import { formatMoney, resolveLocale } from "../../utils/formatNumbers";
 
@@ -70,15 +72,54 @@ function AdminDashboard() {
     selectionRecordFromMonths(ALL_MONTH_INDICES),
   );
   const [activePresetId, setActivePresetId] = useState("all");
+  const [adminStats, setAdminStats] = useState(null);
+  const [recentTrips, setRecentTrips] = useState(MOCK_TRIPS_WALLET_BY_MONTH.slice(0, 4).map((row, index) => ({
+    id: `rt-${index + 1}`,
+    vehicle: `VEH-${index + 1}`,
+    timeKey: `rt${index + 1}`,
+    fare: row.wallet / 100 || 0,
+    status: "Completed",
+  })));
+  const [statsLoading, setStatsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchAdminStats = async () => {
+      setStatsLoading(true);
+      try {
+        const { data } = await API.get(ENDPOINTS.ADMIN_DASHBOARD);
+        setAdminStats(data);
+        if (Array.isArray(data.recent_trips)) {
+          setRecentTrips(data.recent_trips);
+        }
+      } catch (error) {
+        console.error("Failed to load admin dashboard stats", error);
+      } finally {
+        setStatsLoading(false);
+      }
+    };
+
+    fetchAdminStats();
+  }, []);
 
   const filteredTrendData = useMemo(() => {
-    return MOCK_TRIPS_WALLET_BY_MONTH.filter((d) => monthSelection[d.monthIndex])
+    const source = adminStats
+      ? adminStats.revenue_by_month.map((row) => ({
+          monthIndex: row.monthIndex,
+          trips:
+            adminStats.trips_by_month?.find((item) => item.monthIndex === row.monthIndex)
+              ?.count || 0,
+          wallet: row.amount,
+        }))
+      : MOCK_TRIPS_WALLET_BY_MONTH;
+
+    return source
+      .filter((d) => monthSelection[d.monthIndex])
       .sort((a, b) => a.monthIndex - b.monthIndex)
       .map((d) => ({
         ...d,
         month: t(`adminDashboard.monthShort.${d.monthIndex}`),
       }));
-  }, [monthSelection, t]);
+  }, [adminStats, monthSelection, t]);
 
   const toggleMonth = useCallback((monthIndex) => {
     setActivePresetId(null);
@@ -95,45 +136,26 @@ function AdminDashboard() {
     setMonthSelection(selectionRecordFromMonths(preset.months));
   }, []);
   // Mock dashboard stats
-  const stats = {
-    walletBalance: 1247.5,
-    totalTrips: 142,
-    activeViolations: 3,
-    violationsFines: 450,
-    monthlyRevenue: 2847,
-  };
+  const stats = adminStats
+    ? {
+        walletBalance: adminStats.wallet_balance,
+        totalTrips: adminStats.total_trips,
+        activeViolations: adminStats.active_violations,
+        violationsFines: adminStats.violations_fines,
+        monthlyRevenue: adminStats.revenue_by_month.reduce(
+          (sum, item) => sum + item.amount,
+          0,
+        ),
+      }
+    : {
+        walletBalance: 1247.5,
+        totalTrips: 142,
+        activeViolations: 3,
+        violationsFines: 450,
+        monthlyRevenue: 2847,
+      };
 
-  // Mock recent trips
-  const recentTrips = [
-    {
-      id: "rt-1",
-      vehicle: "NYC-4521",
-      timeKey: "rt1",
-      fare: 24.5,
-      status: "Completed",
-    },
-    {
-      id: "rt-2",
-      vehicle: "NYC-4521",
-      timeKey: "rt2",
-      fare: 18.75,
-      status: "Violation",
-    },
-    {
-      id: "rt-3",
-      vehicle: "NYC-7834",
-      timeKey: "rt3",
-      fare: 31.2,
-      status: "Completed",
-    },
-    {
-      id: "rt-4",
-      vehicle: "NYC-2201",
-      timeKey: "rt4",
-      fare: 19.0,
-      status: "Completed",
-    },
-  ];
+  const displayedRecentTrips = adminStats?.recent_trips || recentTrips;
 
   return (
       <main className="admin-main-content">
@@ -349,28 +371,52 @@ function AdminDashboard() {
         {/* Content Grid */}
         <section className="admin-content-section">
           {/* Recent Trips */}
-          <div className="admin-card">
-            <h3 className="card-title">{t("adminDashboard.recentTrips")}</h3>
-            <div className="admin-trips-list">
-              {recentTrips.map((trip) => (
-                <div key={trip.id} className="admin-trip-item">
-                  <div className="trip-icon trip-icon--lucide" aria-hidden>
-                    <Car size={20} strokeWidth={1.75} />
-                  </div>
-                  <div className="trip-details">
-                    <h4>{trip.vehicle}</h4>
-                    <p>{t(`adminDashboard.tripTimes.${trip.timeKey}`)}</p>
-                  </div>
-                  <div className="trip-fare">{fmtMoney(trip.fare)}</div>
-                  <span className={`trip-status ${trip.status.toLowerCase()}`}>
-                    {trip.status === "Completed"
-                      ? t("common.completed")
-                      : trip.status === "Violation"
-                        ? t("common.violation")
-                        : trip.status}
-                  </span>
-                </div>
-              ))}
+          <div className="recent-trips-card">
+            <div className="recent-trips-header">
+              <h3 className="recent-trips-title">{t("adminDashboard.recentTrips")}</h3>
+              <a href="/trips" className="recent-trips-view-all">{t("common.viewAll")}</a>
+            </div>
+            <div className="recent-trips-table-wrapper">
+              <table className="recent-trips-table">
+                <thead>
+                  <tr>
+                    <th>{t("trips.vehicle")}</th>
+                    <th>{t("trips.time")}</th>
+                    <th>{t("trips.fare")}</th>
+                    <th>{t("trips.status")}</th>
+                    <th>{t("trips.violations")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {displayedRecentTrips.map((trip) => {
+                    const isPaid = trip.status === "Completed";
+                    return (
+                      <tr key={trip.id}>
+                        <td className="vehicle-cell">
+                          <div className="vehicle-icon-wrapper">
+                            <Car size={20} strokeWidth={1.75} />
+                          </div>
+                          <span className="vehicle-name">{trip.vehicle}</span>
+                        </td>
+                        <td>{t(`adminDashboard.tripTimes.${trip.timeKey}`)}</td>
+                        <td className="fare-cell">{fmtMoney(trip.fare)}</td>
+                        <td>
+                          <span className={`status-badge ${isPaid ? "status-paid" : "status-not-paid"}`}>
+                            {trip.status === "Completed"
+                              ? t("common.paid")
+                              : trip.status === "Violation"
+                                ? t("common.notPaid")
+                                : trip.status}
+                          </span>
+                        </td>
+                        <td className="violations-cell">
+                          {isPaid ? "—" : fmtMoney(trip.fare * 0.15)}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </div>
 

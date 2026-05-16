@@ -178,99 +178,132 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+.profile-vehicles-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.profile-add-vehicle-btn {
+  padding: 8px 16px;
+  background: #007fff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.profile-add-vehicle-btn:hover {
+  background: #0066cc;
+  transform: translateY(-1px);
+}
+
 .profile-card-title {
   font-size: 18px;
   font-weight: 700;
   color: #111827;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
-.profile-vehicles-list {
+.profile-vehicles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.profile-vehicle-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+  border: 1px solid #e0f2fe;
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
 }
 
-.profile-vehicle-item {
+.profile-vehicle-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #007fff 0%, #0066cc 100%);
+}
+
+.profile-vehicle-card:hover {
+  border-color: #007fff;
+  box-shadow: 0 8px 24px rgba(0, 127, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.profile-vehicle-card-icon {
+  width: 48px;
+  height: 48px;
+  background: #dbeafe;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 20px;
-  background: #f9fafb;
-  border-radius: 20px;
-  border: 1px solid #e5e7eb;
+  justify-content: center;
+  color: #007fff;
+  flex-shrink: 0;
 }
 
-.profile-vehicle-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.profile-vehicle-card-content {
+  flex: 1;
 }
 
-.profile-vehicle-plate {
+.profile-vehicle-card-plate {
+  margin: 0 0 4px 0;
   font-size: 16px;
   font-weight: 700;
-  color: #111827;
+  color: #0f172a;
+  letter-spacing: -0.01em;
 }
 
-.profile-vehicle-model {
-  font-size: 14px;
-  color: #6b7280;
+.profile-vehicle-card-model {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.profile-vehicle-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.profile-vehicle-status {
-  padding: 8px 16px;
+.profile-vehicle-card-status {
+  padding: 8px 14px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
   border: none;
   cursor: pointer;
   transition: all 0.2s;
-  min-height: 40px;
+  width: 100%;
 }
 
-.profile-vehicle-status-active {
+.profile-vehicle-card-status-active {
   background: #dcfce7;
   color: #166534;
 }
 
-.profile-vehicle-status-active:hover {
+.profile-vehicle-card-status-active:hover {
   background: #bbf7d0;
+  transform: translateY(-1px);
 }
 
-.profile-vehicle-status-inactive {
+.profile-vehicle-card-status-inactive {
   background: #f3f4f6;
   color: #6b7280;
 }
 
-.profile-vehicle-status-inactive:hover {
+.profile-vehicle-card-status-inactive:hover {
   background: #e5e7eb;
-}
-
-.profile-vehicle-view-btn {
-  width: 44px;
-  height: 44px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 20px;
-  color: #007fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.profile-vehicle-view-btn:hover {
-  background: #eff6ff;
-  border-color: #007fff;
-  transform: scale(1.05);
+  transform: translateY(-1px);
 }
 
 /* ============================================
@@ -349,6 +382,10 @@
   .profile-stats-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .profile-vehicles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -371,14 +408,26 @@
     gap: 16px;
   }
 
-  .profile-vehicle-item {
+  .profile-vehicles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-vehicles-header {
     flex-direction: column;
-    align-items: flex-start;
     gap: 12px;
   }
 
-  .profile-vehicle-actions {
+  .profile-add-vehicle-btn {
     width: 100%;
-    justify-content: space-between;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-vehicles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card-title {
+    font-size: 16px;
   }
 }

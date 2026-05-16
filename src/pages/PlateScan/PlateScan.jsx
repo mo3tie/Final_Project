@@ -20,8 +20,6 @@ function PlateScan({ adminMode = false }) {
   const { t, i18n } = useTranslation();
   const fileRef = useRef(null);
   const [scans, setScans] = useState([]);
-  const [accounts, setAccounts] = useState([]);
-  const [ownerUserId, setOwnerUserId] = useState("");
   const [walletBalance, setWalletBalance] = useState(null);
   const [loading, setLoading] = useState(true);
   const [scanning, setScanning] = useState(false);
@@ -39,30 +37,14 @@ function PlateScan({ adminMode = false }) {
   const load = useCallback(async () => {
     setError("");
     try {
-      if (adminMode) {
-        const [scanRes, accountsRes] = await Promise.all([
-          API.get(scansUrl, {
-            params: ownerUserId ? { user_id: ownerUserId } : {},
-          }),
-          API.get(ENDPOINTS.ADMIN_ACCOUNTS),
-        ]);
-        setScans(scanRes.data || []);
-        const acc = accountsRes.data || [];
-        setAccounts(acc);
-        if (acc.length && !ownerUserId) {
-          setOwnerUserId(String(acc[0].id));
-        }
-        setWalletBalance(null);
-      } else {
-        const { data } = await API.get(ENDPOINTS.PLATE_SCANS);
-        setScans(data || []);
-      }
+      const { data } = await API.get(scansUrl);
+      setScans(data || []);
     } catch (e) {
       setError(e.response?.data?.detail || e.message || t("plateScan.loadError"));
     } finally {
       setLoading(false);
     }
-  }, [t, adminMode, scansUrl, ownerUserId]);
+  }, [t, scansUrl]);
 
   useEffect(() => {
     setLoading(true);
@@ -72,27 +54,16 @@ function PlateScan({ adminMode = false }) {
   const onPickFile = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (adminMode && !ownerUserId) {
-      setError(t("plateScan.selectUserFirst"));
-      return;
-    }
     setPreview(URL.createObjectURL(file));
     runScan(file);
   };
 
   const runScan = async (file) => {
-    if (adminMode && !ownerUserId) {
-      setError(t("plateScan.selectUserFirst"));
-      return;
-    }
     setScanning(true);
     setError("");
     setLastGate(null);
     const fd = new FormData();
     fd.append("image", file);
-    if (adminMode) {
-      fd.append("owner_user_id", ownerUserId);
-    }
     try {
       const { data } = await API.post(postUrl, fd);
       setScans((prev) => [data, ...prev.filter((s) => s.id !== data.id)]);
@@ -112,8 +83,6 @@ function PlateScan({ adminMode = false }) {
     }
   };
 
-  const selectedAccount = accounts.find((a) => String(a.id) === String(ownerUserId));
-
   return (
     <main className="wallet-main-content plate-scan-page">
       <UserPageHeader
@@ -122,43 +91,10 @@ function PlateScan({ adminMode = false }) {
         showFleetId={!adminMode}
       />
 
-      {adminMode ? (
-        <label className="plate-scan-owner-select">
-          <span>
-            <User size={16} aria-hidden /> {t("plateScan.assignToUser")}
-          </span>
-          <select
-            value={ownerUserId}
-            onChange={(e) => setOwnerUserId(e.target.value)}
-            disabled={scanning}
-          >
-            {accounts.length === 0 ? (
-              <option value="">{t("plateScan.noUsers")}</option>
-            ) : (
-              accounts.map((a) => (
-                <option key={a.id} value={a.id}>
-                  {a.name} — {a.email} ({a.fleet_id})
-                </option>
-              ))
-            )}
-          </select>
-          {selectedAccount ? (
-            <p className="plate-scan-owner-hint">{t("plateScan.ownerHint")}</p>
-          ) : null}
-        </label>
-      ) : null}
-
       {walletBalance != null ? (
         <p className="plate-scan-wallet">
           <Banknote size={18} aria-hidden />
-          {adminMode ? t("plateScan.ownerWalletBalance") : t("plateScan.walletBalance")}:{" "}
-          <strong>{fmtMoney(walletBalance)}</strong>
-          {selectedAccount ? (
-            <span className="plate-scan-wallet-user">
-              {" "}
-              ({selectedAccount.name})
-            </span>
-          ) : null}
+          {t("plateScan.walletBalance")}: <strong>{fmtMoney(walletBalance)}</strong>
         </p>
       ) : null}
 
@@ -184,11 +120,7 @@ function PlateScan({ adminMode = false }) {
           >
             {lastGate.paid ? t("plateScan.gatePaid") : t("plateScan.gateUnpaid")}
           </p>
-          {adminMode && selectedAccount ? (
-            <p className="plate-scan-gate-name">
-              {t("plateScan.chargedTo", { name: selectedAccount.name })}
-            </p>
-          ) : lastGate.gate_name ? (
+          {lastGate.gate_name ? (
             <p className="plate-scan-gate-name">{lastGate.gate_name}</p>
           ) : null}
         </section>
@@ -208,13 +140,13 @@ function PlateScan({ adminMode = false }) {
             accept="image/*"
             className="plate-scan-file-input"
             onChange={onPickFile}
-            disabled={scanning || !ownerUserId}
+            disabled={scanning}
           />
           <button
             type="button"
             className="plate-scan-upload-btn"
             onClick={() => fileRef.current?.click()}
-            disabled={scanning || !ownerUserId}
+            disabled={scanning}
           >
             {scanning ? (
               <>

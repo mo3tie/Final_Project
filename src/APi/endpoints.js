@@ -3,6 +3,7 @@
 export const ENDPOINTS = {
   LOGIN: "/users/auth/login/",
   SIGNUP: "/users/auth/signup/",
+  SEND_OTP: "/users/auth/send-otp/",
   ME: "/users/me/",
   VERIFY_PASSWORD: "/users/me/verify-password/",
   TRIPS: "/users/trips/",
