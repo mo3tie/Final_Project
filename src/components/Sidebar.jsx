@@ -60,15 +60,7 @@ function Sidebar({ userData, role = "user" }) {
       adminPath: "/admin/wallet",
       roles: ["user", "admin"],
     },
-    {
-      key: "plateScan",
-      icon: ScanLine,
-      labelKey: "sidebar.plateScan",
-      hintKey: "hintPlateScan",
-      userPath: null,
-      adminPath: "/admin/plate-scan",
-      roles: ["admin"],
-    },
+   
     {
       key: "profile",
       icon: User,

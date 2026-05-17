@@ -427,22 +427,9 @@ function UserDashboard() {
                         {v.status === "Active" ? t("common.active") : t("common.inactive")}
                       </span>
                       <div className="vehicle-row__actions">
-                        <button
-                          type="button"
-                          className="icon-action icon-action--view"
-                          aria-label={`View ${v.licensePlate}`}
-                          onClick={() => navigate("/dashboard/profile")}
-                        >
-                          <Eye size={18} strokeWidth={1.75} />
-                        </button>
-                        <button
-                          type="button"
-                          className="icon-action icon-action--danger"
-                          aria-label={`Remove ${v.licensePlate}`}
-                          onClick={() => handleRemoveVehicle(v.id, v.licensePlate)}
-                        >
-                          <Trash2 size={18} strokeWidth={1.75} />
-                        </button>
+                       
+                       
+                         
                       </div>
                     </li>
                   ))

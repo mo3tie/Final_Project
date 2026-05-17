@@ -141,7 +141,7 @@ function ProfilePage() {
           <div className="profile-vehicles-header">
             <h3 className="profile-card-title">{t("profile.linkedVehicles")}</h3>
             <button type="button" className="profile-add-vehicle-btn" onClick={() => navigate("/dashboard/profile/add-vehicle")}>
-              + {t("profile.addVehicle")}
+              + {t("AddVehicle")}
             </button>
           </div>
           <div className="profile-vehicles-grid">
@@ -175,7 +175,9 @@ function ProfilePage() {
         </section>
 
         <section className="profile-stats-card">
-          <h3 className="profile-card-title">{t("profile.quickStats")}</h3>
+          <h1 className="profile-card-title">{t("profile.quickStats")}</h1>
+          <br />
+          <br />
           <div className="profile-stats-grid">
             <div className="profile-stat-item">
               <div className="profile-stat-icon-wrapper profile-stat-icon-blue">

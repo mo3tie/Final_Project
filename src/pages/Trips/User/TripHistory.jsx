@@ -121,7 +121,7 @@ function TripHistory() {
   const formatTooltipValue = useCallback((v) => formatChartCount(v, loc), [loc]);
   const formatYAxis = useCallback((v) => formatChartCount(v, loc), [loc]);
   const formatTooltipExtra = useCallback(
-    (row) => (row?.topCity ? `${t("trips.chartTooltipTopCity")}: ${row.topCity}` : undefined),
+    (row) => (row?.topCity ? `${t("chartTooltipTopCity")}: ${row.topCity}` : undefined),
     [t],
   );
 
@@ -138,8 +138,7 @@ function TripHistory() {
   return (
     <main className="wallet-main-content trip-history-page">
       <UserPageHeader
-        title={t("trips.title")}
-        subtitle={t("trips.subtitle")}
+        title={t("Trips")}
         user={tripPageUser}
         showFleetId={false}
       />
@@ -156,7 +155,7 @@ function TripHistory() {
             <div className="trip-filter-row">
               <div className="trip-filter-group">
                 <label htmlFor="date-from" className="trip-filter-label">
-                  {t("trips.from")}
+                  {t("from")}
                 </label>
                 <div className="trip-date-input-wrapper">
                   <Calendar className="trip-date-icon" size={18} />
@@ -171,7 +170,7 @@ function TripHistory() {
               </div>
               <div className="trip-filter-group">
                 <label htmlFor="date-to" className="trip-filter-label">
-                  {t("trips.to")}
+                  {t("to")}
                 </label>
                 <div className="trip-date-input-wrapper">
                   <Calendar className="trip-date-icon" size={18} />
@@ -186,7 +185,7 @@ function TripHistory() {
               </div>
               <div className="trip-filter-group trip-filter-group--grow">
                 <label htmlFor="trip-governorate" className="trip-filter-label">
-                  {t("trips.governorate")}
+                  {t("Governorates")}
                 </label>
                 <div className="trip-governorate-wrapper">
                   <MapPin className="trip-governorate-icon" size={18} />
@@ -196,7 +195,7 @@ function TripHistory() {
                     onChange={(e) => setGovernorate(e.target.value)}
                     className="trip-governorate-select"
                   >
-                    <option value="">{t("trips.allGov")}</option>
+                    <option value="">{t("Governments")}</option>
                     {EGYPT_GOVERNORATES.map((g) => (
                       <option key={g} value={g}>
                         {g}
@@ -217,7 +216,7 @@ function TripHistory() {
           </section>
 
           <DeferredMonthlyLineChart
-            title={t("trips.chartTitle")}
+            title={t("Chart")}
             data={chartData}
             valueLabel={t("common.trips")}
             color="#007fff"
@@ -231,14 +230,14 @@ function TripHistory() {
               <table className="trip-table">
                 <thead>
                   <tr>
-                    <th>{t("trips.thTripId")}</th>
-                    <th>{t("trips.thDateTime")}</th>
-                    <th>{t("trips.thGov")}</th>
-                    <th>{t("trips.thPlate")}</th>
-                    <th>{t("trips.thRoute")}</th>
-                    <th>{t("trips.thFare")}</th>
-                    <th>{t("trips.thStatus")}</th>
-                    <th>{t("trips.thViolation")}</th>
+                    <th>{t("TripId")}</th>
+                    <th>{t("DateTime")}</th>
+                    <th>{t("Gov")}</th>
+                    <th>{t("Plate")}</th>
+                    <th>{t("Route")}</th>
+                    <th>{t("Fare")}</th>
+                    <th>{t("Status")}</th>
+                    <th>{t("Violation")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -320,7 +319,7 @@ function TripHistory() {
                 <Car className="trip-stat-icon" size={24} />
               </div>
               <div className="trip-stat-content">
-                <p className="trip-stat-label">{t("trips.totalTrips")}</p>
+                <p className="trip-stat-label">{t("totalTrips")}</p>
                 <h2 className="trip-stat-value numeric-display">{formatCount(stats.totalTrips, loc)}</h2>
               </div>
             </div>
@@ -330,7 +329,7 @@ function TripHistory() {
                 <Wallet className="trip-stat-icon" size={24} />
               </div>
               <div className="trip-stat-content">
-                <p className="trip-stat-label">{t("trips.totalFare")}</p>
+                <p className="trip-stat-label">{t("TotalFare")}</p>
                 <h2 className="trip-stat-value numeric-display">{formatMoney(stats.totalFarePaid, loc, egp)}</h2>
               </div>
             </div>
@@ -340,7 +339,7 @@ function TripHistory() {
                 <AlertTriangle className="trip-stat-icon" size={24} />
               </div>
               <div className="trip-stat-content">
-                <p className="trip-stat-label">{t("trips.totalViolations")}</p>
+                <p className="trip-stat-label">{t("Violations")}</p>
                 <h2 className="trip-stat-value numeric-display">{formatMoney(stats.totalViolations, loc, egp)}</h2>
               </div>
             </div>

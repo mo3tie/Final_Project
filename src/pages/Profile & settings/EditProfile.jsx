@@ -364,7 +364,7 @@ function EditProfile() {
             <section className="edit-profile-card edit-profile-vehicles-card">
               <div className="edit-profile-vehicles-header">
                 <h2 className="edit-profile-card-title">{t("editProfile.myVehicles")}</h2>
-                <p className="edit-profile-add-vehicle-note">{t("profile.vehiclesAdminOnly")}</p>
+                <p className="edit-profile-add-vehicle-note">{t("")}</p>
               </div>
               <div className="edit-profile-vehicle-list">
                 {vehicles.map((vehicle) => (

@@ -246,7 +246,7 @@ function Admin_Trip() {
         <div className="admin-trip-filter-row">
           <div className="admin-trip-filter-group">
             <label htmlFor="admin-date-from" className="admin-trip-filter-label">
-              {t("trips.from")}
+              {t("from")}
             </label>
             <div className="admin-trip-date-input-wrapper">
               <Calendar className="admin-trip-date-icon" size={18} />
@@ -262,7 +262,7 @@ function Admin_Trip() {
 
           <div className="admin-trip-filter-group">
             <label htmlFor="admin-date-to" className="admin-trip-filter-label">
-              {t("trips.to")}
+              {t("to")}
             </label>
             <div className="admin-trip-date-input-wrapper">
               <Calendar className="admin-trip-date-icon" size={18} />
@@ -278,7 +278,7 @@ function Admin_Trip() {
 
           <div className="admin-trip-filter-group admin-trip-filter-group--grow">
             <label htmlFor="admin-trip-governorate" className="admin-trip-filter-label">
-              {t("trips.governorate")}
+              {t("Governorates")}
             </label>
             <div className="admin-trip-governorate-wrapper">
               <MapPin className="admin-trip-governorate-icon" size={18} />
@@ -288,7 +288,7 @@ function Admin_Trip() {
                 onChange={(e) => setGovernorate(e.target.value)}
                 className="admin-trip-governorate-select"
               >
-                <option value="">{t("trips.allGov")}</option>
+                <option value="">{t("Governorates")}</option>
                 {EGYPT_GOVERNORATES.map((g) => (
                   <option key={g} value={g}>
                     {g}
